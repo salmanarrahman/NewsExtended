@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layoutListCategory"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    tools:ignore="MissingPrefix">
+
+    <ImageView
+        android:id="@+id/imageOfCategoryWise"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+
+
+
+    <TextView
+        android:id="@+id/headlineOfCategory"
+        fontPath="fonts/Raleway-Light.ttf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"
+        android:textSize="22sp"
+        tools:text="Sports"
+        app:layout_constraintTop_toBottomOf="@id/imageOfCategoryWise"
+        app:layout_constraintLeft_toLeftOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/newsReporterByCategory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxLines="2"
+        android:textColor="#000000"
+        android:textSize="15sp"
+        app:layout_constraintTop_toBottomOf="@id/headlineOfCategory"
+        android:layout_marginRight="10dp"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:text="fuckdfdyou" />
+
+    <ImageView
+        android:id="@+id/shareBreakingNews"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginRight="10dp"
+        android:src="@drawable/share"
+        android:layout_marginTop="10dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        app:layout_constraintTop_toBottomOf="@id/newsReporterByCategory"
+        android:background="@android:color/black"
+        android:layout_marginTop="10dp"
+
+        />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

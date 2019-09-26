@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fillViewport="true">
+
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    android:paddingBottom="10dp"
+    tools:context=".Activities.FullNewsActivity">
+
+
+
+    <ImageView
+        android:id="@+id/fullNewsImage"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:scaleType="fitXY"
+        android:background="@drawable/image"
+        app:layout_constraintTop_toTopOf="parent"/>
+    <TextView
+        android:id="@+id/subHeadlineOfFullNews"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Bnp calls a meeting and the hartal was declared there"
+        android:textColor="@color/black"
+        android:layout_marginTop="@dimen/fivedp"
+        app:layout_constraintTop_toBottomOf="@id/fullNewsImage"
+        />
+    <TextView
+        android:id="@+id/headlineOfFullNews"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="BNP calls hartal.Studnets become happy"
+        android:textSize="30dp"
+        android:textColor="@color/black"
+        android:layout_marginTop="@dimen/fivedp"
+        app:layout_constraintTop_toBottomOf="@id/subHeadlineOfFullNews"
+        />
+
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/black"
+        android:layout_marginTop="@dimen/fivedp"
+        app:layout_constraintTop_toBottomOf="@id/headlineOfFullNews"/>
+
+    <TextView
+        android:id="@+id/staffReporter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="staff reporter,Dhaka"
+        android:textColor="@color/black"
+        android:layout_marginTop="@dimen/fivedp"
+        app:layout_constraintTop_toBottomOf="@id/view" />
+    <TextView
+        android:id="@+id/mainNewsText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent auctor leo eget mi imperdiet bibendum. In mauris libero, hendrerit nec fermentum vel, lacinia pretium turpis. Proin non risus nunc. Morbi eros tortor, tincidunt sed libero vel, hendrerit ultricies urna. In ut placerat dolor, nec scelerisque felis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce feugiat, leo at consequat ornare, leo eros mattis metus, vel placerat urna odio a eros. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Curabitur eleifend, magna et sollicitudin consectetur, velit neque tristique sapien, vel lacinia ipsum sem quis orci. Aenean lacus orci, porta eget enim vitae, euismod convallis lacus. Fusce pretium elementum neque. Donec posuere, lacus id luctus porttitor, odio ligula feugiat ipsum, a placerat quam elit et ex. Aliquam vel nulla ut lacus lacinia blandit efficitur a eros. Ut lobortis enim consectetur neque semper, non pharetra lectus mattis."
+        android:scrollbars="vertical"
+        android:textSize="22dp"
+        android:textColor="@color/black"
+        android:layout_marginTop="@dimen/fivedp"
+        app:layout_constraintTop_toBottomOf="@id/staffReporter" />
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

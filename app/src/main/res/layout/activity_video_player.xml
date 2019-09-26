@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    tools:context=".Activities.VideoPlayerActivity">
+
+    <com.google.android.youtube.player.YouTubePlayerView
+        android:id="@+id/youtubePlayerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </com.google.android.youtube.player.YouTubePlayerView>
+
+    <TextView
+        android:id="@+id/videoTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/youtubePlayerView"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="15dp"
+        android:textSize="25dp"
+        android:textColor="@color/black"
+        android:text="Little boy recites quran like a Boss."
+        />
+
+
+    <TextView
+        android:id="@+id/cameraManText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/videoTitle"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/black"
+        android:text="Cameraman : Salman Aar Rahman"/>
+    <View
+        android:id="@+id/videoView"
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@id/cameraManText"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:background="@color/black"
+        />
+    <TextView
+        android:id="@+id/littleDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/videoView"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/black"
+        android:text="Etiam cursus ex et fringilla condimentum. Fusce metus tellus, auctor sed est et, laoreet porttitor massa. Duis mattis mi at libero laoreet, at luctus augue molestie. Nunc consectetur ante nec lacus consequat dignissim. Nunc et tortor erat. Donec gravida, velit eget rutrum elementum, sem velit vulputate sem, ac laoreet tellus nunc venenatis lectus. Vestibulum rhoncus lorem justo, nec volutpat orci faucibus a"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
