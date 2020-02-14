@@ -9,6 +9,9 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 
 import android.view.MenuItem;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 import com.orhanobut.logger.AndroidLogAdapter;
@@ -27,6 +30,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
 
 import android.view.Menu;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -40,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
     private ViewPager mViewPager;
+    AdView adView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,12 +52,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         Logger.addLogAdapter(new AndroidLogAdapter());
+        MobileAds.initialize(getApplicationContext(),"ca-app-pub-3940256099942544~3347511713");
 
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
         mViewPager = (ViewPager) findViewById(R.id.view_pager);
         mViewPager.setAdapter(mSectionsPagerAdapter);
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
+        adView = findViewById(R.id.adView);
+        AdRequest adRequest =new  AdRequest.Builder().build();
+        adView.loadAd(adRequest);
 
     //  myAppDatabase = Room.databaseBuilder(getApplicationContext(), MyAppDatabase.class,"categories").allowMainThreadQueries().build();
 
@@ -67,7 +76,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(null);
 
-
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -81,8 +89,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
 
+
     private void addMenuItemInNavMenuDrawer() {
-        List<Categories> list = DatabaseCall.getAllData(MyAppDatabase.getAppDatabase(getApplicationContext()));
+        List<Categories> list = DatabaseCall.getCategoryList(MyAppDatabase.getAppDatabase(getApplicationContext()));
         final  NavigationView navView = (NavigationView) findViewById(R.id.nav_view);
                 Menu menu = navView.getMenu();
                 Menu submenu = menu.addSubMenu(Config.NEWS_CATEGORIES);
@@ -98,10 +107,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
                 navView.invalidate();
 
-
-
-
-
     }
 
 
@@ -111,9 +116,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        } else {
+        } else{
             super.onBackPressed();
-        }
+            finish();        }
     }
 
 
@@ -123,9 +128,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(MenuItem item) {
 
         // Handle navigation view item clicks here.
-        int id = item.getItemId();
+        String id = String.valueOf(item.getItemId());
         Intent intent=new Intent(MainActivity.this,ShowNewsByCategory.class);
+        intent.putExtra("id",id);
         startActivity(intent);
+        Toast.makeText(getApplicationContext(),"pressed "+id,Toast.LENGTH_SHORT).show();
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

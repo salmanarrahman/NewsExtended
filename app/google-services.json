@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "529446948334",
+    "firebase_url": "https://newsx-680f6.firebaseio.com",
+    "project_id": "newsx-680f6",
+    "storage_bucket": "newsx-680f6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:529446948334:android:0c0717d3aaf64f646ed2ff",
+        "android_client_info": {
+          "package_name": "com.sallu.newsex"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "529446948334-bj71hus9qfol096ck63p0dqaj7lg7hui.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBvUnA6MoJdc3t0rj3R2-7FJW487OquIxg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "529446948334-bj71hus9qfol096ck63p0dqaj7lg7hui.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

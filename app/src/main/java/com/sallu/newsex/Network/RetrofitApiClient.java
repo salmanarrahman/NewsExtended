@@ -11,12 +11,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class RetrofitApiClient {
-    //https://api.myjson.com/bins/fw5kb
-    //https://api.myjson.com/bins/11g1nv
-    //https://api.myjson.com/bins/etkob
-    //https://api.myjson.com/bins/14o0tf
-   // private static final String BASE_URL = "https://api.myjson.com/bins/";
-    private static final String BASE_URL = "http://localhost/";
+
+    private static final String BASE_URL = "http://www.iamsalman.xyz/";
 
     private static Retrofit retrofit = null;
 

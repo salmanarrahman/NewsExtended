@@ -1,5 +1,6 @@
 package com.sallu.newsex.Adapters;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,7 +10,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.sallu.newsex.Database.Categories;
+import com.sallu.newsex.Database.CategorywiseNews;
 import com.sallu.newsex.ModelClass.BreakingnewsModelClass;
 import com.sallu.newsex.ModelClass.CategorywiseNewsModelClass;
 import com.sallu.newsex.R;
@@ -18,10 +21,14 @@ import java.util.List;
 
 public class AdapterForCategoryNews extends  RecyclerView.Adapter<AdapterForCategoryNews.MyViewHolderr> {
 
-    List<CategorywiseNewsModelClass> list;
+    List<CategorywiseNews> list;
+    Context context;
+    onNoteListener onNoteListener;
 
-    public AdapterForCategoryNews(List<CategorywiseNewsModelClass> list) {
+    public AdapterForCategoryNews(onNoteListener onNoteListener,Context context,List<CategorywiseNews> list) {
+        this.context = context;
         this.list = list;
+        this.onNoteListener = onNoteListener;
     }
 
     @NonNull
@@ -30,14 +37,14 @@ public class AdapterForCategoryNews extends  RecyclerView.Adapter<AdapterForCate
 
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_news_by_category,parent,false);
 
-        return new AdapterForCategoryNews.MyViewHolderr(view);
+        return new AdapterForCategoryNews.MyViewHolderr(view,onNoteListener);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolderr holder, int position) {
 
-        CategorywiseNewsModelClass mClass = list.get(position);
-        holder.backgroundImage.setImageResource(mClass.getBgImage());
+        CategorywiseNews mClass = list.get(position);
+        Glide.with(context).load("http://iamsalman.xyz/frontend/"+mClass.getThumbnail()).into(holder.backgroundImage);
         holder.headLine.setText(mClass.getHeadline());
         holder.reporter.setText(mClass.getReporter());
 
@@ -50,16 +57,29 @@ public class AdapterForCategoryNews extends  RecyclerView.Adapter<AdapterForCate
     }
 
 
-    public class MyViewHolderr extends RecyclerView.ViewHolder {
+    public class MyViewHolderr extends RecyclerView.ViewHolder implements View.OnClickListener{
         public TextView headLine, reporter;
         ImageView backgroundImage;
+        onNoteListener onNoteListener;
 
-        public MyViewHolderr(View view) {
+        public MyViewHolderr(View view,onNoteListener onNoteListener) {
             super(view);
+            this.onNoteListener = onNoteListener;
             headLine = (TextView) view.findViewById(R.id.headlineOfCategory);
             reporter = (TextView) view.findViewById(R.id.newsReporterByCategory);
             backgroundImage = view.findViewById(R.id.imageOfCategoryWise);
+            view.setOnClickListener(this);
         }
+
+        @Override
+        public void onClick(View view) {
+            onNoteListener.onNoteClicked(getAdapterPosition());
+
+        }
+    }
+
+    public interface onNoteListener{
+        void onNoteClicked(int position);
     }
 
 

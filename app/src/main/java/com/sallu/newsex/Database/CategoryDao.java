@@ -7,20 +7,18 @@ import androidx.room.Query;
 import java.util.List;
 
 @Dao
-public interface MyDao {
+public interface CategoryDao {
 
     @Insert
     void addUser(Categories categories);
 
     @Query("select * from categories")
-    public List<Categories> getCategory();
+    List<Categories> getCategory();
 
     @Query("select count(*) from categories")
     int getUsersCount();
 
     @Query("delete from categories")
     void deleteAll();
-
-
 
 }

@@ -8,12 +8,17 @@ import androidx.room.RoomDatabase;
 
 import com.sallu.newsex.Utils.Config;
 
-@Database(entities = {Categories.class},version = 1, exportSchema = false)
+@Database(entities = {Dates.class,Categories.class, TrendingNews.class,BreakingNews.class,CategorywiseNews.class,Video.class},version = 1, exportSchema = false)
 public abstract class MyAppDatabase extends RoomDatabase {
 
     private static MyAppDatabase INSTANCE;
 
-    public abstract MyDao myDao();
+    public abstract CategoryDao categoryDao();
+    public abstract TrendingNewsDao trendingNewsDao();
+    public abstract BreakingNewsDao breakingNewsDao();
+    public abstract CategorywisenewsDao categorywisenewsDao();
+    public abstract DateDao dateDao();
+    public abstract VideoDao videoDao();
 
     public static MyAppDatabase getAppDatabase(Context context) {
         if (INSTANCE == null) {

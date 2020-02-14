@@ -11,4 +11,5 @@ public class Config {
 
     public static final String API_KEY = "AIzaSyCs1olguShw-dkgKymcLvFwYWluoSh4vno";
 
+    public static long backPressedTime;
 }
