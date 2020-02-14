@@ -257,7 +257,7 @@ public class StartActivity extends AppCompatActivity implements AdapterForDialog
                                 video.setVideoid(data.getId());
                                 video.setVideoaddress(data.getVideoaddress());
                                 video.setCameraman(data.getCameraman());
-                                video.setTitle(data.getCameraman());
+                                video.setTitle(data.getTitle());
                                 video.setNews(data.getNews());
                                 video.setThumbnail(data.getThumbnail());
                                 DatabaseCall.addVideos(MyAppDatabase.getAppDatabase(getApplicationContext()), video);

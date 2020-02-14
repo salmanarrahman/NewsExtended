@@ -1,7 +1,6 @@
 package com.sallu.newsex.Adapters;
 
 import android.content.Context;
-import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,8 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.sallu.newsex.Database.Video;
-import com.sallu.newsex.ModelClass.TrendingModelClass;
-import com.sallu.newsex.ModelClass.VideosModelClass;
 import com.sallu.newsex.R;
 
 import java.util.List;
@@ -25,10 +22,12 @@ public class AdapterForVideos  extends RecyclerView.Adapter<AdapterForVideos.MyV
     Context context;
     onNoteListener onNoteListener;
 
-    public AdapterForVideos(Context context, List<Video> list, onNoteListener onNoteListener) {
+
+    public AdapterForVideos(Context context, List<Video> list,onNoteListener onNoteListener) {
         this.list = list;
         this.context = context;
         this.onNoteListener = onNoteListener;
+
     }
 
     @NonNull
@@ -54,10 +53,11 @@ public class AdapterForVideos  extends RecyclerView.Adapter<AdapterForVideos.MyV
     }
 
 
-    public class MyViewHoldeer extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class MyViewHoldeer extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView videoHeadline, videoDuration,reporter;
         ImageView videoThumbnail,play;
         onNoteListener onNoteListener;
+
 
         public MyViewHoldeer(View view,onNoteListener onNoteListener) {
             super(view);
@@ -67,19 +67,20 @@ public class AdapterForVideos  extends RecyclerView.Adapter<AdapterForVideos.MyV
             videoThumbnail = view.findViewById(R.id.videoThumbnail);
             play = view.findViewById(R.id.play_thumbnail);
             view.setOnClickListener(this);
-        }
 
+        }
 
 
         @Override
         public void onClick(View view) {
             onNoteListener.onNoteClicked(getAdapterPosition());
 
-
         }
     }
+
     public interface onNoteListener{
         void onNoteClicked(int position);
     }
+
 
 }

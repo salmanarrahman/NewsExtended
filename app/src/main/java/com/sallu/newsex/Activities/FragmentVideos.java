@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
@@ -29,7 +30,7 @@ import com.sallu.newsex.Utils.RecyclerTouchListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FragmentVideos extends Fragment implements  AdapterForVideos.onNoteListener{
+public class FragmentVideos extends Fragment implements AdapterForVideos.onNoteListener{
 
     RecyclerView recyclerView;
     AdapterForVideos adapter;
@@ -80,6 +81,21 @@ public class FragmentVideos extends Fragment implements  AdapterForVideos.onNote
 
     @Override
     public void onNoteClicked(int position) {
+
+      Video video = list.get(position);
+      String videoAddress = video.getVideoaddress();
+      String headline = video.getTitle();
+      String cameraman = video.getCameraman();
+      String news = video.getNews();
+
+        Intent intent = new Intent(getActivity(),VideoPlayerActivity.class);
+        intent.putExtra("videoAdd",videoAddress);
+        intent.putExtra("headline",headline);
+        intent.putExtra("news",news);
+        intent.putExtra("cameraman",cameraman);
+        startActivity(intent);
+
+
 
     }
 }
