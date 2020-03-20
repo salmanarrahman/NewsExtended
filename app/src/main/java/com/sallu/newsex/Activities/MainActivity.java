@@ -1,9 +1,13 @@
 package com.sallu.newsex.Activities;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.core.view.GravityCompat;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 
@@ -12,8 +16,11 @@ import android.view.MenuItem;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
 import com.sallu.newsex.Adapters.SectionsPagerAdapter;
@@ -41,8 +48,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
-
-
     private ViewPager mViewPager;
     AdView adView;
 
@@ -65,6 +70,32 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     //  myAppDatabase = Room.databaseBuilder(getApplicationContext(), MyAppDatabase.class,"categories").allowMainThreadQueries().build();
 
+        //notifications
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+
+            NotificationChannel channel = new
+                    NotificationChannel(Config.PUSH_NOTIFICATION,Config.PUSH_NOTIFICATION, NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationManager manager = getSystemService(NotificationManager.class);
+            manager.createNotificationChannel(channel);
+
+
+
+            FirebaseMessaging.getInstance().subscribeToTopic(Config.TOPIC_GLOBAL)
+                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            String msg = getString(R.string.msg_subscribed);
+                            if (!task.isSuccessful()) {
+                                msg = getString(R.string.msg_subscribe_failed);
+                            }
+
+                            Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+        }
+
+        //changing font
         CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
                 .setDefaultFontPath("fonts/Raleway-Bold.ttf")
                 .setFontAttrId(R.attr.fontPath)

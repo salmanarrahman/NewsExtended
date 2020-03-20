@@ -251,7 +251,7 @@ public class StartActivity extends AppCompatActivity implements AdapterForDialog
 
                         for (VideosModelClass.Video data: list){
                             try {
-                                // DatabaseCall.deleteFromDates(MyAppDatabase.getAppDatabase(getApplicationContext()));
+                        // DatabaseCall.deleteFromDates(MyAppDatabase.getAppDatabase(getApplicationContext()));
                                 Video video = new Video();
                                 video.setDateid(data.getDateid());
                                 video.setVideoid(data.getId());

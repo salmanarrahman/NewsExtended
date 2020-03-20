@@ -26,7 +26,7 @@
         android:scaleType="fitXY"
         android:background="@drawable/image"
         app:layout_constraintTop_toTopOf="parent"/>
-    <TextView
+  <!--  <TextView
         android:id="@+id/subHeadlineOfFullNews"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -34,7 +34,7 @@
         android:textColor="@color/black"
         android:layout_marginTop="@dimen/fivedp"
         app:layout_constraintTop_toBottomOf="@id/extendedImage"
-        />
+        /> -->
     <TextView
         android:id="@+id/extendedHeadline"
         android:layout_width="match_parent"
@@ -43,7 +43,7 @@
         android:textSize="30dp"
         android:textColor="@color/black"
         android:layout_marginTop="@dimen/fivedp"
-        app:layout_constraintTop_toBottomOf="@id/subHeadlineOfFullNews"
+        app:layout_constraintTop_toBottomOf="@id/extendedImage"
         />
 
 

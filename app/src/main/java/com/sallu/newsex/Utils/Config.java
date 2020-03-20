@@ -11,5 +11,12 @@ public class Config {
 
     public static final String API_KEY = "AIzaSyCs1olguShw-dkgKymcLvFwYWluoSh4vno";
 
-    public static long backPressedTime;
+    public static final String TOPIC_GLOBAL = "global";
+
+
+    public static final String REGISTRATION_COMPLETE = "registrationComplete";
+    public static final String PUSH_NOTIFICATION = "pushNotification";
+
+
+
 }

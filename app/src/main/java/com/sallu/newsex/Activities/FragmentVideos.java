@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
@@ -38,6 +39,7 @@ public class FragmentVideos extends Fragment implements AdapterForVideos.onNoteL
     View rootView;
 
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -45,12 +47,13 @@ public class FragmentVideos extends Fragment implements AdapterForVideos.onNoteL
         Logger.addLogAdapter(new AndroidLogAdapter());
         recyclerView = rootView.findViewById(R.id.videoRecyclerView);
         list = DatabaseCall.getVideos(MyAppDatabase.getAppDatabase(getContext()));
+        TextView warning = rootView.findViewById(R.id.errorTextV);
 
 
 
 
         if (list.size() == 0){
-           // warning.setVisibility(View.VISIBLE);
+            warning.setVisibility(View.VISIBLE);
         }else {
 
             adapter =new AdapterForVideos(getContext(),list,this);
