@@ -13,12 +13,8 @@ public abstract class MyAppDatabase extends RoomDatabase {
 
     private static MyAppDatabase INSTANCE;
 
-    public abstract CategoryDao categoryDao();
-    public abstract TrendingNewsDao trendingNewsDao();
-    public abstract BreakingNewsDao breakingNewsDao();
-    public abstract CategorywisenewsDao categorywisenewsDao();
-    public abstract DateDao dateDao();
-    public abstract VideoDao videoDao();
+    public abstract MyDao dao();
+
 
     public static MyAppDatabase getAppDatabase(Context context) {
         if (INSTANCE == null) {

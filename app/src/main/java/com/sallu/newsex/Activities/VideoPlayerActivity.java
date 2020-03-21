@@ -14,6 +14,8 @@ import com.google.android.youtube.player.YouTubePlayerView;
 import com.sallu.newsex.R;
 import com.sallu.newsex.Utils.Config;
 
+import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
+
 public class VideoPlayerActivity extends YouTubeBaseActivity {
 
     YouTubePlayerView youTubePlayerView;
@@ -24,6 +26,11 @@ public class VideoPlayerActivity extends YouTubeBaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video_player);
+        CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
+                .setDefaultFontPath("fonts/Raleway-Regular.ttf")
+                .setFontAttrId(R.attr.fontPath)
+                .build()
+        );
         youTubePlayerView = findViewById(R.id.youtubePlayerView);
         headlineText = findViewById(R.id.videoTitle);
         cameramanText = findViewById(R.id.cameraManText);

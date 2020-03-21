@@ -9,34 +9,21 @@
 
    <ImageView
        android:id="@+id/newExImage"
-       android:layout_width="100dp"
-       android:layout_height="100dp"
-       android:src="@drawable/logo"
+       android:layout_width="wrap_content"
+       android:layout_height="@dimen/twoFiftyDp"
+       android:src="@drawable/newsx"
        app:layout_constraintTop_toTopOf="parent"
        app:layout_constraintBottom_toBottomOf="parent"
        app:layout_constraintLeft_toLeftOf="parent"
+       app:layout_constraintRight_toRightOf="parent"
       />
-
-   <TextView
-       android:id="@+id/newsExText"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:fontFamily="@font/raleway_light"
-       android:text="@string/newEx"
-       android:textColor="@color/black"
-       android:textSize="70sp"
-       app:layout_constraintBottom_toBottomOf="parent"
-       app:layout_constraintLeft_toRightOf="@id/newExImage"
-       app:layout_constraintTop_toTopOf="parent"
-       app:layout_constraintRight_toRightOf="parent"/>
-
 
 
    <TextView
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
        android:text="We Are getting things ready.."
-       android:textSize="20sp"
+       android:textSize="@dimen/tuentySP"
        android:textColor="@color/black"
        android:fontFamily="@font/raleway_light"
        app:layout_constraintLeft_toLeftOf="parent"

@@ -61,6 +61,7 @@ public class FragmentVideos extends Fragment implements AdapterForVideos.onNoteL
             recyclerView.setLayoutManager(mLayoutManager);
             recyclerView.setItemAnimator(new DefaultItemAnimator());
             recyclerView.setAdapter(adapter);
+            warning.setVisibility(View.INVISIBLE);
         }
 
 

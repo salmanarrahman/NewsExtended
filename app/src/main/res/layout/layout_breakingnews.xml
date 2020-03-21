@@ -1,3 +1,4 @@
+
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -16,7 +17,7 @@
         android:id="@+id/layoutListCategory"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="@dimen/tendp"
         tools:ignore="MissingPrefix">
 
         <ImageView
@@ -35,7 +36,7 @@
             android:textColor="#000000"
             android:textSize="22sp"
             tools:text="Sports"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="@dimen/tendp"
             app:layout_constraintTop_toBottomOf="@id/breakingNewsImage"
             app:layout_constraintLeft_toLeftOf="parent"
             />
@@ -46,10 +47,10 @@
             android:layout_height="wrap_content"
             android:maxLines="2"
             android:textColor="#000000"
-            android:textSize="15sp"
+            android:textSize="@dimen/tendp"
             app:layout_constraintTop_toBottomOf="@id/breakingNews"
-            android:layout_marginLeft="10dp"
-            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="@dimen/tendp"
+            android:layout_marginBottom="@dimen/fiftydp"
             app:layout_constraintLeft_toLeftOf="parent"
             tools:text="fuckdfdyou" />
 

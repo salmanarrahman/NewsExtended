@@ -89,7 +89,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                 msg = getString(R.string.msg_subscribe_failed);
                             }
 
-                            Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
                         }
                     });
 
@@ -97,7 +96,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         //changing font
         CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
-                .setDefaultFontPath("fonts/Raleway-Bold.ttf")
+                .setDefaultFontPath("fonts/Raleway-Regular.ttf")
                 .setFontAttrId(R.attr.fontPath)
                 .build()
         );

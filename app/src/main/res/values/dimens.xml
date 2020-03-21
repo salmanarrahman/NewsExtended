@@ -8,5 +8,11 @@
     <dimen name="thirtyDP">30dp</dimen>
     <dimen name="tendp">10dp</dimen>
     <dimen name="fivedp">5dp</dimen>
+    <dimen name="tuentySP">20sp</dimen>
+    <dimen name="tuentyFiveSP">25sp</dimen>
+    <dimen name="twohundreddp">200dp</dimen>
+    <dimen name="twoFiftyDp">250dp</dimen>
+    <dimen name="fiftydp">15dp</dimen>
+    <dimen name="hundredsp">100sp</dimen>
 
 </resources>

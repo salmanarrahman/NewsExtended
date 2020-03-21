@@ -10,7 +10,7 @@
         android:id="@+id/firstImage"
         android:layout_width="300dp"
         android:layout_height="200dp"
-        android:src="@drawable/newsx"
+        android:src="@drawable/newsxx"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"

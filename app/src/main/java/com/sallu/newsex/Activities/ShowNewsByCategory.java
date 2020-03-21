@@ -53,7 +53,7 @@ public class ShowNewsByCategory extends AppCompatActivity implements AdapterForC
         text = findViewById(R.id.warningMessageOne);
         text.setVisibility(View.INVISIBLE);
         CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
-                .setDefaultFontPath("fonts/Raleway-Light.ttf")
+                .setDefaultFontPath("fonts/Raleway-Regular.ttf")
                 .setFontAttrId(R.attr.fontPath)
                 .build()
         );

@@ -48,7 +48,7 @@ public class MyFirebaseMessagingS extends FirebaseMessagingService {
     public void showNotification(String title,String message){
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this,Config.PUSH_NOTIFICATION)
                 .setContentTitle(title)
-                .setSmallIcon(R.drawable.newsx)
+                .setSmallIcon(R.drawable.newsxx)
                 .setAutoCancel(true)
                 .setContentText(message);
         NotificationManagerCompat managerCompat = NotificationManagerCompat.from(this);

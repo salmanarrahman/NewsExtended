@@ -13,8 +13,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="10dp"
-    android:paddingBottom="10dp"
+    android:layout_margin="@dimen/tendp"
+    android:paddingBottom="@dimen/tendp"
     tools:context=".Activities.FullNewsActivity">
 
 
@@ -22,9 +22,9 @@
     <ImageView
         android:id="@+id/extendedImage"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="@dimen/twohundreddp"
         android:scaleType="fitXY"
-        android:background="@drawable/image"
+
         app:layout_constraintTop_toTopOf="parent"/>
   <!--  <TextView
         android:id="@+id/subHeadlineOfFullNews"
@@ -40,7 +40,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="BNP calls hartal.Studnets become happy"
-        android:textSize="30dp"
+        android:textSize="@dimen/thirtyDP"
         android:textColor="@color/black"
         android:layout_marginTop="@dimen/fivedp"
         app:layout_constraintTop_toBottomOf="@id/extendedImage"

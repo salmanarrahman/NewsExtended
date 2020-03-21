@@ -32,9 +32,6 @@ import retrofit2.Response;
 public class FirstTimeInitActivity extends AppCompatActivity {
 
     Boolean firstRun;
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

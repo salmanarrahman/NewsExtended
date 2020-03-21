@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -14,10 +18,7 @@
         android:background="@color/black"
         app:popupTheme="@style/AppTheme.PopupOverlay"
         app:layout_constraintTop_toTopOf="parent">
-
-
         <TextView
-
             android:id="@+id/toolbar_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -26,13 +27,14 @@
             android:text="@string/newEx"
             android:textColor="@color/white"
             android:textSize="@dimen/thirtyDP" />
-
     </androidx.appcompat.widget.Toolbar>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/newsCategoryRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/toolbar"
+        android:layout_marginBottom="@dimen/tuentySP"
+
 
         ></androidx.recyclerview.widget.RecyclerView>
     <TextView
@@ -40,7 +42,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="it looks your publisher didnt published any news yet!"
-        android:textSize="25sp"
+        android:textSize="@dimen/tuentyFiveSP"
         android:gravity="center"
         android:textColor="@color/white"
         app:layout_constraintTop_toTopOf="parent"
@@ -53,3 +55,4 @@
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

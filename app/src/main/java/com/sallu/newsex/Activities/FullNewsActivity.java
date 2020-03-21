@@ -23,7 +23,7 @@ public class FullNewsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_full_news);
         CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
-                .setDefaultFontPath("fonts/Raleway-Bold.ttf")
+                .setDefaultFontPath("fonts/Raleway-Regular.ttf")
                 .setFontAttrId(R.attr.fontPath)
                 .build()
         );
