@@ -73,6 +73,7 @@ public class StartActivity extends AppCompatActivity implements AdapterForDialog
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
+
        // permissions();
         Fabric.with(this, new Crashlytics());
     //  Crashlytics.getInstance().crash();
@@ -81,18 +82,27 @@ public class StartActivity extends AppCompatActivity implements AdapterForDialog
         firstRun = getSharedPreferences("preference",MODE_PRIVATE).
                 getBoolean("isFirstRun",true);
 
-
+        listOne = DatabaseCall.getDates(MyAppDatabase.getAppDatabase(getApplicationContext()));
         //getting the time
         Date c = Calendar.getInstance().getTime();
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         formattedDate = df.format(c);
 
-        listOne = DatabaseCall.getDates(MyAppDatabase.getAppDatabase(getApplicationContext()));
+        List<Video> videoList = DatabaseCall.getVideos(MyAppDatabase.getAppDatabase(getApplicationContext()));
+        if (videoList.size()>0){
+            DatabaseCall.deleteVideos(MyAppDatabase.getAppDatabase(getApplicationContext()));
+        }
+
 
         Logger.d("Date is  "+formattedDate);
 
-        dateid = DatabaseCall.getDateIDstring(MyAppDatabase.getAppDatabase(getApplicationContext()),formattedDate);
-        Logger.d("The date id is "+dateid);
+        try {
+
+            dateid = DatabaseCall.getDateIDstring(MyAppDatabase.getAppDatabase(getApplicationContext()), formattedDate);
+            Logger.d("The date id is " + dateid);
+        }catch (Exception e){
+            Logger.d(e.getMessage());
+        }
 
 
 
@@ -108,11 +118,13 @@ public class StartActivity extends AppCompatActivity implements AdapterForDialog
 
                 if (firstRun == true) {
                     //  Toast.makeText(getApplicationContext(), "first time", Toast.LENGTH_SHORT).show();
+
+                    //addVideosData();
                     addDataFromServer();
                     addTrendingNews();
                     addBreakingNews();
                     addCategorywiseNews();
-                    addVideosData();
+
 
                     getSharedPreferences("preference", MODE_PRIVATE).edit().putBoolean("isFirstRun", false).commit();
                 } else {
@@ -120,74 +132,21 @@ public class StartActivity extends AppCompatActivity implements AdapterForDialog
                     DatabaseCall.deleteFromBreakingNews(MyAppDatabase.getAppDatabase(getApplicationContext()));
                     DatabaseCall.deleteFromTrendingnNews(MyAppDatabase.getAppDatabase(getApplicationContext()));
                     DatabaseCall.deleteFromCAtegorywiseNews(MyAppDatabase.getAppDatabase(getApplicationContext()));
-                    DatabaseCall.deleteVideos(MyAppDatabase.getAppDatabase(getApplicationContext()));
                     DatabaseCall.deleteFromDates(MyAppDatabase.getAppDatabase(getApplicationContext()));
 
+
+                    //addVideosData();
                     addDataFromServer();
                     addTrendingNews();
                     addBreakingNews();
                     addCategorywiseNews();
-                    addVideosData();
+
 
                 }
 
 
             }
         }
-
-
-
-
-
-
-
-////********************** MAIN CODE ********************************
-
-/*
-
-
-        if (!isConnected()){
-            Intent intent = new Intent(StartActivity.this,MainActivity.class);
-            startActivity(intent);
-        }else {
-
-            if (firstRun == true) {
-              //  Toast.makeText(getApplicationContext(), "first time", Toast.LENGTH_SHORT).show();
-
-
-
-                addDataFromServer();
-                addTrendingNews();
-                addBreakingNews();
-                addCategorywiseNews();
-
-
-
-
-
-
-                getSharedPreferences("preference", MODE_PRIVATE).edit().putBoolean("isFirstRun", false).commit();
-            } else {
-
-                DatabaseCall.deleteFromBreakingNews(MyAppDatabase.getAppDatabase(getApplicationContext()));
-                DatabaseCall.deleteFromTrendingnNews(MyAppDatabase.getAppDatabase(getApplicationContext()));
-                DatabaseCall.deleteFromCAtegorywiseNews(MyAppDatabase.getAppDatabase(getApplicationContext()));
-                DatabaseCall.deleteFromCAtegorywiseNews(MyAppDatabase.getAppDatabase(getApplicationContext()));
-
-
-                addDataFromServer();
-                addTrendingNews();
-                addBreakingNews();
-                addCategorywiseNews();
-                Logger.d("got date id "+dateid);
-
-
-
-            }
-        }
-
-*///
-
 
 
     }
@@ -212,12 +171,7 @@ public class StartActivity extends AppCompatActivity implements AdapterForDialog
         recyclerView.addItemDecoration(new DividerItemDecoration(getApplicationContext(), LinearLayoutManager.VERTICAL));
         recyclerView.setAdapter(adapter);
         alertDialog.show();
-      /*  aButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        }); */
+
 
     }
 
@@ -234,10 +188,13 @@ public class StartActivity extends AppCompatActivity implements AdapterForDialog
         return connected;
     }
 
-    private void addVideosData() {
+  /*  private void addVideosData() {
+
+        Logger.d("Executing video method");
 
         ApiCall apiCall = RetrofitApiClient.getClient().create(ApiCall.class);
         Call<VideosModelClass> call = apiCall.getVideoData(new SendDaterequest(dateid));
+        Logger.d(dateid);
         call.enqueue(new Callback<VideosModelClass>() {
             @Override
             public void onResponse(Call<VideosModelClass> call, Response<VideosModelClass> response) {
@@ -245,8 +202,8 @@ public class StartActivity extends AppCompatActivity implements AdapterForDialog
 
                 if (response.code() == 200){
 
-
                     if (response.code() == 200){
+                        Logger.d("succsss");
                         List<VideosModelClass.Video> list = modelClass.getVideos();
 
                         for (VideosModelClass.Video data: list){
@@ -261,7 +218,7 @@ public class StartActivity extends AppCompatActivity implements AdapterForDialog
                                 video.setNews(data.getNews());
                                 video.setThumbnail(data.getThumbnail());
                                 DatabaseCall.addVideos(MyAppDatabase.getAppDatabase(getApplicationContext()), video);
-
+                                Logger.d(data.getTitle());
                             }catch (Exception e) {
                                 Logger.d(e.getMessage());
                             }
@@ -281,13 +238,15 @@ public class StartActivity extends AppCompatActivity implements AdapterForDialog
             }
         });
 
-    }
+    }*/
 
     private void addCategorywiseNews() {
+        Logger.d("Executing addCategorywiseNews");
 
         ApiCall apiCall = RetrofitApiClient.getClient().create(ApiCall.class);
 
         Call<CategorywiseNewsModelClass> call = apiCall.getCategorywiseNews(new SendDaterequest(dateid));
+
         call.enqueue(new Callback<CategorywiseNewsModelClass>() {
             @Override
             public void onResponse(Call<CategorywiseNewsModelClass> call, Response<CategorywiseNewsModelClass> response) {
@@ -300,8 +259,6 @@ public class StartActivity extends AppCompatActivity implements AdapterForDialog
                         List<CategorywiseNewsModelClass.Datum> list = categorywiseNewsModelClass.getData();
 
                         for (CategorywiseNewsModelClass.Datum data : list) {
-
-
 
                             CategorywiseNews categorywisenews = new CategorywiseNews();
                             categorywisenews.setCategoryid(data.getCategoryid());
@@ -341,8 +298,10 @@ public class StartActivity extends AppCompatActivity implements AdapterForDialog
     }
 
     private void addBreakingNews(){
+        Logger.d("Executing breaking news");
         ApiCall apiCall = RetrofitApiClient.getClient().create(ApiCall.class);
         Call<BreakingnewsModelClass> call = apiCall.getBreakingNews(new SendDaterequest(dateid));
+
         call.enqueue(new Callback<BreakingnewsModelClass>() {
             @Override
             public void onResponse(Call<BreakingnewsModelClass> call, Response<BreakingnewsModelClass> response) {
@@ -387,9 +346,11 @@ public class StartActivity extends AppCompatActivity implements AdapterForDialog
     }
 
     private void addTrendingNews() {
+        Logger.d("Executing");
 
         ApiCall apiCall = RetrofitApiClient.getClient().create(ApiCall.class);
         Call<TrendingModelClass> call = apiCall.getTrendingNews(new SendDaterequest(dateid));
+
 
         call.enqueue(new Callback<TrendingModelClass>() {
             @Override
@@ -511,12 +472,64 @@ public class StartActivity extends AppCompatActivity implements AdapterForDialog
 
     public  void addDataFromServer(){
 
+
         ApiCall apiCall = RetrofitApiClient.getClient().create(ApiCall.class);
+        Call<VideosModelClass> call = apiCall.getVideoData(new SendDaterequest(dateid));
+        Logger.d(dateid);
+        call.enqueue(new Callback<VideosModelClass>() {
+            @Override
+            public void onResponse(Call<VideosModelClass> call, Response<VideosModelClass> response) {
+                VideosModelClass modelClass = response.body();
+
+                if (response.code() == 200){
+
+                    if (response.code() == 200){
+                        Logger.d("succsss");
+                        List<VideosModelClass.Video> list = modelClass.getVideos();
+
+                        for (VideosModelClass.Video data: list){
+                            try {
+                                // DatabaseCall.deleteFromDates(MyAppDatabase.getAppDatabase(getApplicationContext()));
+                                Video video = new Video();
+                                video.setDateid(data.getDateid());
+                                video.setVideoid(data.getId());
+                                video.setVideoaddress(data.getVideoaddress());
+                                video.setCameraman(data.getCameraman());
+                                video.setTitle(data.getTitle());
+                                video.setNews(data.getNews());
+                                video.setThumbnail(data.getThumbnail());
+                                DatabaseCall.addVideos(MyAppDatabase.getAppDatabase(getApplicationContext()), video);
+                                Logger.d(data.getTitle());
+                            }catch (Exception e) {
+                                Logger.d(e.getMessage());
+                            }
 
 
-        Call<CategoryModelClass> callBack = apiCall.getCategory();
+                        }
+                    }
 
-        callBack.enqueue(new Callback<CategoryModelClass>() {
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<VideosModelClass> call, Throwable t) {
+                Logger.d(t.getMessage());
+
+            }
+        });
+
+
+        //Lets do this brother
+
+        Logger.d("Executing addDataFromServer");
+
+        ApiCall apiCall1 = RetrofitApiClient.getClient().create(ApiCall.class);
+
+
+        Call<CategoryModelClass> callBack1 = apiCall1.getCategory();
+
+        callBack1.enqueue(new Callback<CategoryModelClass>() {
             @Override
             public void onResponse(Call<CategoryModelClass> call, Response<CategoryModelClass> response) {
                 CategoryModelClass mClass = response.body();
@@ -572,7 +585,7 @@ public class StartActivity extends AppCompatActivity implements AdapterForDialog
         int clickedid = listPosition.getDateid();
         dateid = clickedid;
 
-        Logger.d("clicked "+dateid);
+      //  Logger.d("clicked "+dateid);
 
 
         DatabaseCall.deleteFromBreakingNews(MyAppDatabase.getAppDatabase(getApplicationContext()));

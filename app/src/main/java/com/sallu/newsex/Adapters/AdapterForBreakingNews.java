@@ -44,7 +44,7 @@ public class AdapterForBreakingNews extends  RecyclerView.Adapter<AdapterForBrea
 //        holder.backgroundImage.setImageResource(mClass.getBgImage());
         holder.breakingNewsHeadline.setText(mClass.getHeadline());
         holder.reporter.setText(mClass.getReporter());
-        Glide.with(context).load("http://iamsalman.xyz/frontend/"+mClass.getThumbnail()).into(holder.backgroundImage);
+        Glide.with(context).load("http://iamsalman.xyz/newsX/"+mClass.getThumbnail()).into(holder.backgroundImage);
 
 
     }

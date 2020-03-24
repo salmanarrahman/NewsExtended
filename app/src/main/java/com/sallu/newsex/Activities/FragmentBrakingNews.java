@@ -10,23 +10,17 @@ import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
 import com.sallu.newsex.Adapters.AdapterForBreakingNews;
-import com.sallu.newsex.Adapters.AdapterForTrendingPage;
 import com.sallu.newsex.Database.BreakingNews;
 import com.sallu.newsex.Database.DatabaseCall;
 import com.sallu.newsex.Database.MyAppDatabase;
-import com.sallu.newsex.ModelClass.BreakingnewsModelClass;
-import com.sallu.newsex.ModelClass.TrendingModelClass;
 import com.sallu.newsex.R;
-import com.sallu.newsex.Utils.RecyclerTouchListener;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class FragmentBrakingNews extends Fragment implements AdapterForBreakingNews.onNoteListener{

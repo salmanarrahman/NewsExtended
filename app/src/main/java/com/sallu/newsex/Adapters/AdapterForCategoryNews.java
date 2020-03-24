@@ -44,7 +44,7 @@ public class AdapterForCategoryNews extends  RecyclerView.Adapter<AdapterForCate
     public void onBindViewHolder(@NonNull MyViewHolderr holder, int position) {
 
         CategorywiseNews mClass = list.get(position);
-        Glide.with(context).load("http://iamsalman.xyz/frontend/"+mClass.getThumbnail()).into(holder.backgroundImage);
+        Glide.with(context).load("http://iamsalman.xyz/newsX/"+mClass.getThumbnail()).into(holder.backgroundImage);
         holder.headLine.setText(mClass.getHeadline());
         holder.reporter.setText(mClass.getReporter());
 

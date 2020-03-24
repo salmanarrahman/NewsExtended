@@ -68,7 +68,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         AdRequest adRequest =new  AdRequest.Builder().build();
         adView.loadAd(adRequest);
 
-    //  myAppDatabase = Room.databaseBuilder(getApplicationContext(), MyAppDatabase.class,"categories").allowMainThreadQueries().build();
 
         //notifications
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
@@ -143,12 +142,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+       DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else{
-            super.onBackPressed();
-            finish();        }
+
+            this.finishActivity(1);
+        }
+
+
+
     }
 
 
@@ -162,7 +165,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Intent intent=new Intent(MainActivity.this,ShowNewsByCategory.class);
         intent.putExtra("id",id);
         startActivity(intent);
-        Toast.makeText(getApplicationContext(),"pressed "+id,Toast.LENGTH_SHORT).show();
+      //  Toast.makeText(getApplicationContext(),"pressed "+id,Toast.LENGTH_SHORT).show();
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

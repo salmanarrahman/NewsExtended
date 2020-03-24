@@ -3,8 +3,8 @@ package com.sallu.newsex.Database;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
-
 import java.util.List;
+
 @Dao
 public interface MyDao {
     @Insert
@@ -40,6 +40,7 @@ public interface MyDao {
 
     @Query("select * from categorywisenews where id = :id")
     CategorywiseNews getNewsById(String id);
+
     @Insert
     void addDate(Dates date);
 
@@ -49,11 +50,12 @@ public interface MyDao {
     @Query("delete from date")
     void deleteAllFromDate();
 
-    @Query("select * from date where date = :date")
+    @Query("select * from date where date_ = :date")
     Dates getDateID(String date);
 
-    @Query("select dateid from date where date = :date")
+    @Query("select dateid from date where date_ = :date")
     int  getDateIDString(String date);
+
     @Insert
     void addTrendingNews(TrendingNews trendingNews);
 
@@ -62,6 +64,7 @@ public interface MyDao {
 
     @Query("delete from trendingnews")
     void deleteAllFromTrendingNews();
+
     @Insert
     void addVideoAddress(Video video);
 

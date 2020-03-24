@@ -45,8 +45,7 @@ public class AdapterForTrendingPage extends RecyclerView.Adapter<AdapterForTrend
         TrendingNews modelClass = list.get(position);
         holder.headline.setText(modelClass.getHeadline());
         holder.reporter.setText(modelClass.getReporter());
-       // holder.backgroundImage.setImageResource(modelClass.getBackgroundImage());
-        Glide.with(context).load("http://iamsalman.xyz/frontend/"+modelClass.getThumbnail()).into(holder.backgroundImage);
+        Glide.with(context).load("http://iamsalman.xyz/newsX/"+modelClass.getThumbnail()).into(holder.backgroundImage);
 
 
     }

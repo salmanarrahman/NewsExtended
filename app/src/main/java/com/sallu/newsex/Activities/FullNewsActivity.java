@@ -39,7 +39,7 @@ public class FullNewsActivity extends AppCompatActivity {
         String Reporter = bundle.getString("reporter");
         String image = bundle.getString("image");
 
-        Glide.with(getApplicationContext()).load("http://iamsalman.xyz/frontend/"+image).into(imageView);
+        Glide.with(getApplicationContext()).load("http://iamsalman.xyz/newsX/"+image).into(imageView);
 
         headline.setText(Headline);
         news.setText(News);

@@ -41,8 +41,8 @@ public class AdapterForVideos  extends RecyclerView.Adapter<AdapterForVideos.MyV
     public void onBindViewHolder(@NonNull MyViewHoldeer holder, int position) {
         Video mClass =  list.get(position);
         holder.reporter.setText(mClass.getCameraman());
-        Glide.with(context).load("http://iamsalman.xyz/frontend/"+mClass.getThumbnail()).into(holder.videoThumbnail);
-        holder.videoHeadline.setText(mClass.getNews());
+        Glide.with(context).load("http://iamsalman.xyz/newsX/"+mClass.getThumbnail()).into(holder.videoThumbnail);
+        holder.videoHeadline.setText(mClass.getTitle());
         holder.play.setVisibility(View.VISIBLE);
         holder.play.setImageResource(R.drawable.play_thumbnail);
     }

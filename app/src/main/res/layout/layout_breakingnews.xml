@@ -36,7 +36,7 @@
             android:textColor="#000000"
             android:textSize="22sp"
             tools:text="Sports"
-            android:layout_marginLeft="@dimen/tendp"
+
             app:layout_constraintTop_toBottomOf="@id/breakingNewsImage"
             app:layout_constraintLeft_toLeftOf="parent"
             />
@@ -49,7 +49,7 @@
             android:textColor="#000000"
             android:textSize="@dimen/tendp"
             app:layout_constraintTop_toBottomOf="@id/breakingNews"
-            android:layout_marginLeft="@dimen/tendp"
+
             android:layout_marginBottom="@dimen/fiftydp"
             app:layout_constraintLeft_toLeftOf="parent"
             tools:text="fuckdfdyou" />

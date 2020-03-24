@@ -5,30 +5,21 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.GridView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.room.Database;
 
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
-import com.sallu.newsex.Adapters.AdapterForBreakingNews;
-import com.sallu.newsex.Adapters.AdapterForTrendingPage;
 import com.sallu.newsex.Adapters.AdapterForVideos;
 import com.sallu.newsex.Database.DatabaseCall;
 import com.sallu.newsex.Database.MyAppDatabase;
 import com.sallu.newsex.Database.Video;
-import com.sallu.newsex.ModelClass.TrendingModelClass;
-import com.sallu.newsex.ModelClass.VideosModelClass;
 import com.sallu.newsex.R;
-import com.sallu.newsex.Utils.RecyclerTouchListener;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class FragmentVideos extends Fragment implements AdapterForVideos.onNoteListener{
@@ -47,6 +38,7 @@ public class FragmentVideos extends Fragment implements AdapterForVideos.onNoteL
         Logger.addLogAdapter(new AndroidLogAdapter());
         recyclerView = rootView.findViewById(R.id.videoRecyclerView);
         list = DatabaseCall.getVideos(MyAppDatabase.getAppDatabase(getContext()));
+        Logger.d(list.size());
         TextView warning = rootView.findViewById(R.id.errorTextV);
 
 

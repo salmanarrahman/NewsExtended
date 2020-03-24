@@ -32,12 +32,12 @@ import retrofit2.Response;
 public class FirstTimeInitActivity extends AppCompatActivity {
 
     Boolean firstRun;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first_time_init);
         Logger.addLogAdapter(new AndroidLogAdapter());
-
 
         firstRun = getSharedPreferences("preference",MODE_PRIVATE).
                 getBoolean("isFirstRun",true);
@@ -59,7 +59,8 @@ public class FirstTimeInitActivity extends AppCompatActivity {
                 startActivity(intent);
             }else{
                 DatabaseCall.deleteFromDates(MyAppDatabase.getAppDatabase(getApplicationContext()));
-                addDate();            }
+                addDate();
+            }
 
 
         }
@@ -115,6 +116,8 @@ public class FirstTimeInitActivity extends AppCompatActivity {
 
 
                     }
+                }else{
+                    Logger.d("there is an issue");
                 }
 
             }

@@ -46,7 +46,7 @@
             android:textColor="#000000"
             android:textSize="22sp"
             tools:text="Sports"
-            android:layout_marginLeft="@dimen/tendp"
+
             app:layout_constraintTop_toBottomOf="@id/videoThumbnail"
             app:layout_constraintLeft_toLeftOf="parent"
             />
@@ -59,7 +59,7 @@
             android:textColor="#000000"
             android:textSize="@dimen/fiftydp"
             app:layout_constraintTop_toBottomOf="@id/videoTitle"
-            android:layout_marginLeft="@dimen/tendp"
+
             android:layout_marginBottom="@dimen/fiftydp"
             app:layout_constraintLeft_toLeftOf="parent"
             tools:text="staff reporter" />

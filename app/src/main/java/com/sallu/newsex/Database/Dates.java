@@ -13,7 +13,7 @@ public class Dates {
     @ColumnInfo(name = "dateid")
     public int dateid;
 
-    @ColumnInfo(name = "date")
+    @ColumnInfo(name = "date_")
     public String date;
 
     public int getId() {
